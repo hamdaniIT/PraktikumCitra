@@ -5,15 +5,28 @@
  */
 package Praktikum5BrightnessDanContras;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author hd
  */
 public class Praktikum5 extends javax.swing.JFrame {
+    BufferedImage bfIMG;
+    Image iconImage;
+    Image size;
+    int x;
+    int ukuranX;
+    int ukuranY;
+    int Y;
 
-    /**
-     * Creates new form Praktikum5
-     */
     public Praktikum5() {
         initComponents();
     }
@@ -27,21 +40,278 @@ public class Praktikum5 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollBar1 = new javax.swing.JScrollBar();
+        jScrollBar2 = new javax.swing.JScrollBar();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPane1.setViewportView(jLabel6);
+
+        jScrollPane2.setViewportView(jLabel5);
+
+        jLabel1.setText("Citra Input");
+
+        jLabel2.setText("Citra Output");
+
+        jLabel3.setText("Pengaturan Contrast:");
+
+        jLabel4.setText("Pengaturan Brightness:");
+
+        jScrollBar1.setMaximum(255);
+        jScrollBar1.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
+        jScrollBar1.setVisibleAmount(0);
+        jScrollBar1.addAdjustmentListener(new java.awt.event.AdjustmentListener() {
+            public void adjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {
+                jScrollBar1AdjustmentValueChanged(evt);
+            }
+        });
+
+        jScrollBar2.setMaximum(255);
+        jScrollBar2.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
+        jScrollBar2.setVisibleAmount(0);
+        jScrollBar2.addAdjustmentListener(new java.awt.event.AdjustmentListener() {
+            public void adjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {
+                jScrollBar2AdjustmentValueChanged(evt);
+            }
+        });
+
+        jButton1.setText("INPUT IMAGE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("jLabel7");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addGap(5, 5, 5)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    String path;
+    Image IconImage;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser open = new JFileChooser(); //membuat object  tempat menampung image
+        int getImage = open.showOpenDialog(jScrollPane1); // mengamil gambar pada folder
+        if (getImage == JFileChooser.APPROVE_OPTION) {
+            path = open.getSelectedFile().getPath();
+            bfIMG=loadImage(path);
+            jLabel5.setIcon(new ImageIcon(path));
+            jLabel6.setIcon(new ImageIcon(path));
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jScrollBar1AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_jScrollBar1AdjustmentValueChanged
+        BufferedImage  gambarBinary= brigthness(bfIMG,jScrollBar1.getValue());
+        gambarBinary= kontras(gambarBinary,jScrollBar2.getValue());
+        ImageIcon ic = new ImageIcon(gambarBinary);
+        jLabel6.setIcon(ic);
+    }//GEN-LAST:event_jScrollBar1AdjustmentValueChanged
+
+    private void jScrollBar2AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_jScrollBar2AdjustmentValueChanged
+        BufferedImage  gambarBinary= brigthness(bfIMG,jScrollBar1.getValue());
+        gambarBinary= kontras(gambarBinary,jScrollBar2.getValue());
+        ImageIcon ic = new ImageIcon(gambarBinary);
+        jLabel6.setIcon(ic);
+    }//GEN-LAST:event_jScrollBar2AdjustmentValueChanged
+    public BufferedImage brigthness(BufferedImage loadIng, int cerah) {
+        BufferedImage prosesGambar;
+        ukuranX = loadIng.getWidth();
+        ukuranY = loadIng.getHeight();
+        prosesGambar = new BufferedImage(ukuranX, ukuranY,
+                BufferedImage.TYPE_INT_RGB);
+        Graphics g = prosesGambar.getGraphics();
+        g.drawImage(loadIng, 0, 0, null);
+        WritableRaster raster = prosesGambar.getRaster();
+        for (int x = 0; x < ukuranX; x++) {
+            for (int y = 0; y < ukuranY; y++) {
+                int rgb = loadIng.getRGB(x, y);
+                int alpha = (rgb << 24) & 0xff;
+                int merahg = (rgb >> 16) & 0xff;
+                int hijaug = (rgb >> 8) & 0xff;
+                int birug = (rgb >> 0) & 0xff;
+                int gray = ((merahg) + (hijaug) + (birug)) / 3;
+                int merah2 = merahg + cerah;
+                int hijau2 = hijaug + cerah;
+                int biru2 = birug + cerah;
+                if (merah2 < 0) {
+                    merah2 = 0;
+                }
+                if (hijau2 < 0) {
+                    hijau2 = 0;
+                }
+                if (biru2 < 0) {
+
+                }
+                if (merah2 > 255) {
+                    merah2 = 255;
+                }
+                if (hijau2 > 255) {
+                    hijau2 = 255;
+                }
+                if (biru2 > 255) {
+                    biru2 = 255;
+                }
+                int rgb2 = alpha | merah2 << 16 | hijau2 << 8 | biru2;
+                prosesGambar.setRGB(x, y, rgb2);
+            }
+        }
+        return prosesGambar;
+    }
+
+    public BufferedImage kontras(BufferedImage loadIng , int kontras) {
+        {
+            BufferedImage prosesGambar;
+            ukuranX = loadIng.getWidth();
+            ukuranY = loadIng.getHeight();
+            prosesGambar = new BufferedImage(ukuranX, ukuranY,
+                    BufferedImage.TYPE_INT_RGB);
+            Graphics g = prosesGambar.getGraphics();
+            g.drawImage(loadIng, 0, 0, null);
+            WritableRaster raster = prosesGambar.getRaster();
+            for (int x = 0; x < ukuranX; x++) {
+                for (int y = 0; y < ukuranY; y++) {
+                    int rgb = loadIng.getRGB(x, y);
+                    int alpha = (rgb << 24) & 0xff;
+                    int merahg = (rgb >> 16) & 0xff;
+                    int hijaug = (rgb >> 8) & 0xff;
+                    int birug = (rgb >> 0) & 0xff;
+                    int gray = ((merahg) + (hijaug) + (birug)) / 3;
+                    int merah2 = 0, hijau2 = 0, biru2 = 0;
+                    if (merahg > 128) {
+                        merah2 = merahg + kontras;
+                    } else {
+                        merah2 = merahg - kontras;
+                    }
+                    if (hijaug > 128) {
+                        hijau2 = hijaug + kontras;
+                    } else {
+                        hijau2 = hijaug - kontras;
+                    }
+                    if (birug > 128) {
+                        biru2 = birug + kontras;
+                    } else {
+                        biru2 = birug + kontras;
+                    }
+                    if (merah2 < 0) {
+                        merah2 = 0;
+                    }
+                    if (hijau2 < 0) {
+                        hijau2 = 0;
+                    }
+                    if (biru2 < 0) {
+                        biru2 = 0;
+                    }
+                    if (merah2 > 255) {
+                        merah2 = 255;
+                    }
+                    if (hijau2 > 255) {
+                        hijau2 = 255;
+                    }
+                    if (biru2 > 255) {
+                        biru2 = 255;
+                    }
+                    int rgb2 = alpha | merah2 << 16 | hijau2 << 8 | biru2;
+                    prosesGambar.setRGB(x, y, rgb2);
+                }
+            }
+            return prosesGambar;
+        }
+    }
+
+    public static BufferedImage loadImage(String path) {
+        BufferedImage bufImage = null;
+        try {
+            bufImage = ImageIO.read(new File(path));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bufImage;
+    }
 
     /**
      * @param args the command line arguments
@@ -79,5 +349,20 @@ public class Praktikum5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollBar jScrollBar2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
